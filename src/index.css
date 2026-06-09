@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .bg-grid-white {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+  .bg-grid-glow {
+    background: radial-gradient(circle 800px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.15) 0%, transparent 80%);
+  }
+  .text-gradient {
+    background-image: linear-gradient(to right, var(--color-cyan-400), var(--color-blue-500), var(--color-purple-600));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+}
+
+/* Base resets & custom scrollbar */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: #030712;
+  color: #f3f4f6;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+}
+
+/* Custom Scrollbar for premium SaaS feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030712;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  border: 2px solid #030712;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Glowing mesh animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1) translate(0px, 0px);
+    opacity: 0.5;
+  }
+  33% {
+    transform: scale(1.1) translate(30px, -50px);
+    opacity: 0.7;
+  }
+  66% {
+    transform: scale(0.9) translate(-20px, 20px);
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse-glow-1 {
+  animation: pulseGlow 15s infinite ease-in-out;
+}
+
+.animate-pulse-glow-2 {
+  animation: pulseGlow 20s infinite ease-in-out -5s;
+}
+
+.animate-pulse-glow-3 {
+  animation: pulseGlow 25s infinite ease-in-out -12s;
+}
